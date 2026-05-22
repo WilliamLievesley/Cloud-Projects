@@ -1,51 +1,120 @@
-# Hybrid Identity Lab
+# Hybrid Identity & Azure RBAC Lab
 
-Enterprise-style hybrid identity environment integrating Active Directory and Microsoft Entra ID.
+Enterprise-style Microsoft Entra ID and Azure RBAC lab designed to simulate branch-based access governance, role inheritance and least-privilege administration.
 
-## Technologies
-- Microsoft Entra ID
-- Active Directory
-- Entra Connect
-- MFA
-- Conditional Access
-- RBAC
-- Windows Server
-- Azure
+---
 
-## Objectives
-- Configure hybrid identity between Active Directory and Microsoft Entra ID
-- Implement MFA and Conditional Access policies
-- Configure RBAC and administrative role separation
-- Simulate enterprise onboarding and identity governance workflows
+# Objectives
 
+- Configure Microsoft Entra security groups
+- Implement Azure RBAC
+- Simulate branch-based access governance
+- Understand RBAC inheritance and scope
+- Implement least-privilege access control
+- Deploy Azure resources for RBAC testing
 
+---
+
+# Environment Overview
 
 ## Resource Groups
 
-![Resource Groups](screenshots/Resource-groups.png)
+- London_Branch
+- Nottingham_Branch
+
+## Security Groups
+
+- London_Branch
+- Nottingham_Branch
+- IT (centralised)
+
+## Resources
+
+- Azure Storage Accounts
+- Branch-based RBAC assignments
+
+---
+
+# Key Concepts Demonstrated
+
+- Azure RBAC
+- Microsoft Entra security groups
+- Least-privilege access control
+- Role inheritance
+- Scoped administration
+- Branch-based resource segmentation
+- Group-based administrative access
+
+---
+
+# Resource Groups
+
+![Resource Groups](./screenshots/Resource-groups.png)
 
 Branch-based Azure Resource Groups used to simulate infrastructure segmentation and RBAC scope boundaries.
 
 ---
 
-## Security Groups
+# Security Groups
 
-![Security Groups](screenshots/Security-groups.png)
+![Security Groups](./screenshots/Security-groups.png)
 
 Microsoft Entra security groups used to implement branch-based and administrative access control.
 
 ---
 
-## RBAC Assignment
+# RBAC Assignments
 
-![RBAC Assignment](screenshots/Branch-role-assignment.png)
+![RBAC Assignment](./screenshots/Branch-role-assignment.png)
 
 Configured Azure RBAC assignments using group-based inheritance and least-privilege principles.
 
+### RBAC Structure
+
+| Group | Role | Scope |
+|---|---|---|
+| London_Branch | Reader | London_Branch |
+| Nottingham_Branch | Reader | Nottingham_Branch |
+| IT (centralised) | Virtual Machine Contributor | Both branches |
+
 ---
 
-## Storage Resources
+# Storage Resources
 
-![Storage Accounts](screenshots/Storage-accounts.png)
+![Storage Accounts](./screenshots/Storage-accounts.png)
 
-Deployed Azure Storage Accounts inside branch resource groups to demonstrate RBAC inheritance and scoped resource access.
+Azure Storage Accounts deployed within branch resource groups to demonstrate RBAC inheritance and scoped resource access.
+
+---
+
+# IAM Design Logic
+
+The environment was designed using layered RBAC principles:
+
+- Branch groups provide scoped visibility to branch resources
+- Administrative groups inherit elevated infrastructure permissions
+- Permissions are assigned to groups rather than individual users
+- Access inheritance is controlled through Microsoft Entra security groups
+
+This approach improves scalability, governance consistency and least-privilege enforcement.
+
+---
+
+# Issues Encountered
+
+- Understanding Azure RBAC scope inheritance
+- Distinguishing Microsoft Entra roles from Azure RBAC permissions
+- Designing branch vs department-based access models
+- Managing overlapping inherited permissions
+- Navigating differences between Azure Portal and Microsoft Entra Admin Center
+
+---
+
+# Future Improvements
+
+- Conditional Access policies
+- MFA enforcement
+- Hybrid Active Directory integration
+- Intune device management
+- Privileged Identity Management (PIM)
+- Additional branch infrastructure resources
