@@ -17,3 +17,7 @@ Enterprise-style hybrid identity environment integrating Active Directory and Mi
 - Implement MFA and Conditional Access policies
 - Configure RBAC and administrative role separation
 - Simulate enterprise onboarding and identity governance workflows
+
+
+
+[Nottingham RBAC](pictures/Branch_role_assignment.png)
