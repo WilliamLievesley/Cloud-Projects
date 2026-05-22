@@ -21,3 +21,4 @@ Enterprise-style hybrid identity environment integrating Active Directory and Mi
 
 
 [Nottingham RBAC](pictures/Branch role assignment.png)
+<img width="1556" height="606" alt="image" src="https://github.com/user-attachments/assets/5ee6007e-96f6-4a1d-9d5d-a879ac2db2ae" />
