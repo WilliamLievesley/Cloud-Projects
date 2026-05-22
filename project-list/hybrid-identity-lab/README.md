@@ -71,11 +71,11 @@ Configured Azure RBAC assignments using group-based inheritance and least-privil
 
 ### RBAC Structure
 
-| Group | Role | Scope |
-|---|---|---|
-| London_Branch | Reader | London_Branch |
-| Nottingham_Branch | Reader | Nottingham_Branch |
-| IT (centralised) | Virtual Machine Contributor | Both branches |
+| Group | Role | Scope | Role Description |
+|---|---|---|---|
+| London_Branch | Reader | London_Branch | Standard London branch users inherit read-only visibility to resources inside the London branch resource group. Users can inspect resources and configurations but cannot modify infrastructure. |
+| Nottingham_Branch | Reader | Nottingham_Branch | Standard Nottingham branch users inherit read-only visibility to resources inside the Nottingham branch resource group. Users can inspect resources and configurations but cannot modify infrastructure. |
+| IT (centralised) | Virtual Machine Contributor | Both branches | Centralised IT administrators inherit elevated infrastructure permissions across both branch resource groups. Users in this group can manage virtual machines and related infrastructure resources without receiving full ownership or RBAC administration privileges.|
 
 ---
 
