@@ -16,7 +16,7 @@ Configured a Windows Server 2022 Domain Controller within Azure to simulate on-p
 ---
 # Windows Server Deployment
 
-![Deployed VM](../screenshots/deployed-vm.png)
+![Deployed VM](./screenshots/deployed-vm.png)
 
 Deployed a Windows Server 2022 Datacenter: Azure Edition virtual machine within Azure to simulate on-premises enterprise identity infrastructure and hybrid identity foundations.
 
@@ -35,7 +35,7 @@ Deployed a Windows Server 2022 Datacenter: Azure Edition virtual machine within 
 
 # Active Directory Installation
 
-![AD Installation](../screenshots/ad-installation.png)
+![AD Installation](./screenshots/ad-installation.png)
 
 Installed the Active Directory Domain Services server role using Server Manager.
 
@@ -43,7 +43,7 @@ Installed the Active Directory Domain Services server role using Server Manager.
 
 # Domain Controller Promotion
 
-![Domain Controller Promotion](../screenshots/domain-controller-promotion.png)
+![Domain Controller Promotion](./screenshots/domain-controller-promotion.png)
 
 Promoted the Windows Server VM to a Domain Controller and created a new Active Directory forest using the `corp.local` domain.
 
