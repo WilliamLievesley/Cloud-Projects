@@ -14,8 +14,13 @@ Configured a Windows Server 2022 Domain Controller within Azure to simulate on-p
 - Begin organisational identity structure planning
 
 ---
+# Windows Server Deployment
 
-# Environment Overview
+![Deployed VM](../screenshots/deployed-vm.png)
+
+Deployed a Windows Server 2022 Datacenter: Azure Edition virtual machine within Azure to simulate on-premises enterprise identity infrastructure and hybrid identity foundations.
+
+### VM Configuration
 
 | Setting | Value |
 |---|---|
@@ -23,7 +28,8 @@ Configured a Windows Server 2022 Domain Controller within Azure to simulate on-p
 | OS | Windows Server 2022 Datacenter: Azure Edition |
 | Region | West Europe |
 | VM Size | B2ts_v2 |
-| Domain | corp.local |
+| Role | Domain Controller |
+# Environment Overview
 
 ---
 
