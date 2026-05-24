@@ -35,7 +35,7 @@ Deployed a Windows Server 2022 Datacenter: Azure Edition virtual machine within 
 
 # Active Directory Installation
 
-![AD Installation](./screenshots/Active-directory-setup.png)
+![AD Installation](../screenshots/Active-directory-setup.png)
 
 Installed the Active Directory Domain Services server role using Server Manager.
 
@@ -43,7 +43,7 @@ Installed the Active Directory Domain Services server role using Server Manager.
 
 # Domain Controller Promotion
 
-![Domain Controller Promotion](./screenshots/Corp.local-domain.png
+![Domain Controller Promotion](../screenshots/Corp.local-domain.png)
 
 Promoted the Windows Server VM to a Domain Controller and created a new Active Directory forest using the `corp.local` domain.
 
