@@ -16,7 +16,7 @@ Configured a Windows Server 2022 Domain Controller within Azure to simulate on-p
 ---
 # Windows Server Deployment
 
-![Deployed VM](./screenshots/deployed-vm.png)
+![Deployed VM](../screenshots/deployed-vm.png)
 
 Deployed a Windows Server 2022 Datacenter: Azure Edition virtual machine within Azure to simulate on-premises enterprise identity infrastructure and hybrid identity foundations.
 
