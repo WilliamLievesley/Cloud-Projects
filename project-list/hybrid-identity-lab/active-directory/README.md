@@ -89,8 +89,8 @@ Created domain users and security groups within Active Directory to simulate ent
 
 #### Users
 - Steve Rogers
-- Tony Stark
-- Bruce Banner
+- Natasha Romanoff
+- Wade Wilson
 
 #### Security Groups
 - Nottingham_Users
