@@ -77,3 +77,29 @@ Promoted the Windows Server VM to a Domain Controller and created a new Active D
 - Hybrid identity synchronisation
 - Microsoft Entra Connect
 - Intune integration
+
+
+# Active Directory Users and Groups
+
+![AD Users and Groups](../screenshots/ad-users-and-groups.png)
+
+Created domain users and security groups within Active Directory to simulate enterprise identity governance and role-based administration.
+
+### Example Objects
+
+#### Users
+- Steve Rogers
+- Tony Stark
+- Bruce Banner
+
+#### Security Groups
+- Nottingham_Users
+- IT_Admins
+
+### Key Concepts Demonstrated
+
+- Group-based identity governance
+- Centralised user management
+- Security group administration
+- Organisational identity structure
+- Active Directory object management
