@@ -85,7 +85,6 @@ Created domain users and security groups within Active Directory to simulate ent
 
 #### Security Groups
 - Nottingham_Users
-- IT_Admins (Displayed under corp.local)
 
 # Group-Membership
 ![Group-membership](../screenshots/group-membership.png)
