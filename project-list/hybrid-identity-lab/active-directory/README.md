@@ -81,10 +81,11 @@ Created domain users and security groups within Active Directory to simulate ent
 - Steve Rogers
 - Natasha Romanoff
 - Wade Wilson
+- Tony Stark
 
 #### Security Groups
 - Nottingham_Users
-- IT_Admins
+- IT_Admins (Displayed under corp.local)
 
 # Group-Membership
 ![Group-membership](../screenshots/group-membership.png)
