@@ -69,16 +69,6 @@ Promoted the Windows Server VM to a Domain Controller and created a new Active D
 
 ---
 
-# Future Improvements
-
-- Organisational Unit (OU) structure
-- Group Policy Objects (GPOs)
-- Domain users and security groups
-- Hybrid identity synchronisation
-- Microsoft Entra Connect
-- Intune integration
-
-
 # Active Directory Users and Groups
 
 ![AD Users and Groups](../screenshots/ad-users-and-groups.png)
@@ -105,14 +95,17 @@ Created domain users and security groups within Active Directory to simulate ent
 - Active Directory object management
 
 
-# group-membership
+# Group-Membership
 ![Group-membership](../screenshots/group-membership.png)
 
-# GPO Linked/Group Policy
+# GPO Linked
 ![GPO linked to OU](../screenshots/gpo-linked-to-ou.png)
-![Group Policy](../screenshots/control-panel-policy.png)
 
 Created and linked a Group Policy Object (GPO) to the Nottingham organisational unit to simulate centralized user environment management and policy enforcement.
+
+# Group Policy
+
+![Group Policy](../screenshots/control-panel-policy.png)
 
 ### Policy Demonstrated
 
