@@ -98,6 +98,8 @@ Created domain users and security groups within Active Directory to simulate ent
 # Group-Membership
 ![Group-membership](../screenshots/group-membership.png)
 
+Assigned users to appropriate security groups to simulate scalable role-based access control and centralized identity governance.
+
 # GPO Linked
 ![GPO linked to OU](../screenshots/gpo-linked-to-ou.png)
 
