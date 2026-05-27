@@ -103,3 +103,9 @@ Created domain users and security groups within Active Directory to simulate ent
 - Security group administration
 - Organisational identity structure
 - Active Directory object management
+
+
+# group-membership
+![Group-membership](../screenshots/group-membership.png)
+Implemented group-based identity management using Active Directory security groups to simulate scalable enterprise access governance and role-based administration.
+- 
