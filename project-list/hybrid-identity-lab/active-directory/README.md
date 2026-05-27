@@ -86,15 +86,6 @@ Created domain users and security groups within Active Directory to simulate ent
 - Nottingham_Users
 - IT_Admins
 
-### Key Concepts Demonstrated
-
-- Group-based identity governance
-- Centralised user management
-- Security group administration
-- Organisational identity structure
-- Active Directory object management
-
-
 # Group-Membership
 ![Group-membership](../screenshots/group-membership.png)
 
