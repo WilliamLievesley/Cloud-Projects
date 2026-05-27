@@ -108,8 +108,8 @@ Created domain users and security groups within Active Directory to simulate ent
 # group-membership
 ![Group-membership](../screenshots/group-membership.png)
 
-# Group Policy
-
+# GPO Linked/Group Policy
+![GPO linked to OU](../screenshots/gpo-linked-to-ou.png)
 ![Group Policy](../screenshots/control-panel-policy.png)
 
 Created and linked a Group Policy Object (GPO) to the Nottingham organisational unit to simulate centralized user environment management and policy enforcement.
