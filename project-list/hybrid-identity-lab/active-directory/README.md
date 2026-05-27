@@ -108,4 +108,19 @@ Created domain users and security groups within Active Directory to simulate ent
 # group-membership
 ![Group-membership](../screenshots/group-membership.png)
 
-Implemented group-based identity management using Active Directory security groups to simulate scalable enterprise access governance and role-based administration.
+# Group Policy
+
+![Group Policy](../screenshots/control-panel-policy.png)
+
+Created and linked a Group Policy Object (GPO) to the Nottingham organisational unit to simulate centralized user environment management and policy enforcement.
+
+### Policy Demonstrated
+
+- Prohibit access to Control Panel and PC settings
+
+### Key Concepts Demonstrated
+
+- Group Policy Objects (GPOs)
+- OU-linked policy inheritance
+- Centralized administration
+- User environment restrictions
