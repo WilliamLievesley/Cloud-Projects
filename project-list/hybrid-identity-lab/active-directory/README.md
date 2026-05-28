@@ -94,7 +94,7 @@ Assigned users to appropriate security groups to simulate scalable role-based ac
 # GPO Linked
 ![GPO linked to OU](../screenshots/gpo-linked-to-ou.png)
 
-Created and linked a Group Policy Object (GPO) to the Nottingham organisational unit to simulate centralized user environment management and policy enforcement.
+Implemented a Group Policy Object (GPO) linked to the Nottingham OU to simulate centralized user environment governance.
 
 # Group Policy
 
