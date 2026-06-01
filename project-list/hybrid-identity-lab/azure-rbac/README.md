@@ -1,4 +1,4 @@
-#Azure RBAC Lab
+# Azure RBAC Lab
 
 Enterprise-style Microsoft Entra ID and Azure RBAC lab designed to simulate branch-based access governance, role inheritance and least-privilege administration.
 
