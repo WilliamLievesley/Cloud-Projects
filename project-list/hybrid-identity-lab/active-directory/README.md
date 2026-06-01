@@ -15,7 +15,7 @@ Configured a Windows Server 2022 Domain Controller within Azure to simulate on-p
 
 ---
 # Architecture Overview
-
+```text
 DC01
 │
 ├── Active Directory Domain Services
@@ -26,6 +26,7 @@ DC01
 CLIENT01
 │
 └── Domain-joined workstation
+```
 ---
 # Windows Server Deployment
 
