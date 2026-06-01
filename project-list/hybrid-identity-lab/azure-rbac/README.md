@@ -57,7 +57,7 @@ Branch-based Azure Resource Groups used to simulate infrastructure segmentation 
 
 # Security Groups
 
-![Security Groups](./screenshots/Security-groups.png)
+![Security Groups](../screenshots/Security-groups.png)
 
 Microsoft Entra security groups used to implement branch-based and administrative access control.
 
@@ -65,7 +65,7 @@ Microsoft Entra security groups used to implement branch-based and administrativ
 
 # RBAC Assignments
 
-![RBAC Assignment](./screenshots/Branch-role-assignment.png)
+![RBAC Assignment](../screenshots/Branch-role-assignment.png)
 
 Configured Azure RBAC assignments using group-based inheritance and least-privilege principles.
 
@@ -81,7 +81,7 @@ Configured Azure RBAC assignments using group-based inheritance and least-privil
 
 # Storage Resources
 
-![Storage Accounts](./screenshots/Storage-accounts.png)
+![Storage Accounts](../screenshots/Storage-accounts.png)
 
 Azure Storage Accounts deployed within branch resource groups to demonstrate RBAC inheritance and scoped resource access.
 
