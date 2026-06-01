@@ -49,7 +49,7 @@ Enterprise-style Microsoft Entra ID and Azure RBAC lab designed to simulate bran
 
 # Resource Groups
 
-![Resource Groups](./screenshots/Resource-groups.png)
+![Resource Groups](../screenshots/Resource-groups.png)
 
 Branch-based Azure Resource Groups used to simulate infrastructure segmentation and RBAC scope boundaries.
 
