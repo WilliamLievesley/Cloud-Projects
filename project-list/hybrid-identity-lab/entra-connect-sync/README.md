@@ -31,7 +31,7 @@ During configuration, Microsoft Entra Connect identified that `corp.local` was a
 
 Synchronization was configured using Password Hash Synchronization and enabled upon completion of the configuration process.
 
-![Ready To Configure](.screenshots/ready-to-configure.png)
+![Ready To Configure](..screenshots/ready-to-configure.png)
 
 ## Validation
 
@@ -39,7 +39,7 @@ Synchronization completed successfully and Active Directory identities were sync
 
 Validation was performed by reviewing synchronized user accounts within Microsoft Entra ID and confirming that synchronized identities were marked with the **On-premises Sync** attribute.
 
-![Synchronized Users](.screenshots/synced-users-entra.png)
+![Synchronized Users](..screenshots/synced-users-entra.png)
 
 Four Active Directory user accounts were successfully synchronized from the on-premises environment into Microsoft Entra ID.
 
