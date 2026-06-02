@@ -8,5 +8,5 @@ Here I have listed a few pieces of work that showcase my knowledge in...
 
 | Project  | Skills | Tools/frameworks | What was done | Link 1 | Link 2 |
 |----------|---------|------------------|---------------|--------|--------|
-| entra-hybrid-identity-lab | Cloud | Azure |  | [Project]() | |
+| entra-hybrid-identity-lab | Cloud | Azure |  | [Project](https://github.com/WilliamLievesley/Cloud-Projects/tree/main/project-list/hybrid-identity-lab) | |
 
