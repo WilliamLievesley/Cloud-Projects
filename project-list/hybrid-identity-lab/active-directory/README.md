@@ -70,7 +70,7 @@ Promoted the Windows Server VM to a Domain Controller and created a new Active D
 - Enterprise identity infrastructure
 - Windows Server administration
 - Hybrid identity foundations
-- Identity governance architecture
+- Identity management architecture
 
 ---
 
@@ -87,7 +87,7 @@ Promoted the Windows Server VM to a Domain Controller and created a new Active D
 
 ![AD Users and Groups](../screenshots/ad-users-and-groups.png)
 
-Created domain users and security groups within Active Directory to simulate enterprise identity governance and role-based administration.
+Created domain users and security groups within Active Directory to simulate enterprise identity management and role-based administration.
 
 ### Example Objects
 
