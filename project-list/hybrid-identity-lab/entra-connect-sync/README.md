@@ -9,6 +9,7 @@ This phase extends the Active Directory environment by integrating on-premises i
 * Configure Microsoft Entra Connect
 * Synchronize on-premises Active Directory identities with Microsoft Entra ID
 * Validate hybrid identity synchronization
+* Demonstrate hybrid identity architecture
 
 ## Architecture Overview
 
@@ -65,6 +66,7 @@ Microsoft Entra Connect synchronizes users, groups and selected identity attribu
 * Active Directory Integration
 * Identity Synchronization
 * Troubleshooting Authentication and Synchronization Issues
+*  Source of Authority Concepts
 
 ## Outcome
 
