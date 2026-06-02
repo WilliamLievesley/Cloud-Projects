@@ -10,7 +10,7 @@ Enterprise-style Microsoft Entra ID and Azure RBAC lab designed to simulate bran
 - Implement Azure RBAC
 - Simulate branch-based access governance
 - Understand RBAC inheritance and scope
-- Implement least-privilege access control
+- Apply least-privilege access control principles
 - Deploy Azure resources for RBAC testing
 
 ---
