@@ -65,7 +65,6 @@ Microsoft Entra Connect synchronizes users, groups and selected identity attribu
 * Hybrid Identity Architecture
 * Active Directory Integration
 * Identity Synchronization
-* Identity Lifecycle Management
 * Troubleshooting Authentication and Synchronization Issues
 
 ## Outcome
