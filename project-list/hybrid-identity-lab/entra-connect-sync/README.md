@@ -66,7 +66,6 @@ Microsoft Entra Connect synchronizes users, groups and selected identity attribu
 * Active Directory Integration
 * Identity Synchronization
 * Identity Lifecycle Management
-* Azure RBAC Fundamentals
 * Troubleshooting Authentication and Synchronization Issues
 
 ## Outcome
