@@ -1,120 +1,110 @@
-# Hybrid Identity & Azure RBAC Lab
+# Hybrid Identity Lab
 
-Enterprise-style Microsoft Entra ID and Azure RBAC lab designed to simulate branch-based access governance, role inheritance and least-privilege administration.
+## Overview
 
----
+This project demonstrates the implementation of a hybrid identity environment using Active Directory, Microsoft Entra ID and Azure Role-Based Access Control (RBAC).
 
-# Objectives
+The objective was to simulate a common enterprise identity architecture where user identities are managed on-premises, synchronized to the cloud and used to access Azure resources through centralized identity and access management controls.
 
-- Configure Microsoft Entra security groups
-- Implement Azure RBAC
-- Simulate branch-based access governance
-- Understand RBAC inheritance and scope
-- Implement least-privilege access control
-- Deploy Azure resources for RBAC testing
+## Architecture Overview
 
----
+```text
+CLIENT01
+    │
+    ▼
+Active Directory (DC01)
+    │
+    ▼
+Microsoft Entra Connect
+    │
+    ▼
+Microsoft Entra ID
+    │
+    ▼
+Azure Resources
+```
 
-# Environment Overview
+## Project Components
 
-## Resource Groups
+### Active Directory
 
-- London_Branch
-- Nottingham_Branch
+Implemented an on-premises Active Directory environment to provide centralized identity management.
 
-## Security Groups
+Key activities:
 
-- London_Branch
-- Nottingham_Branch
-- IT (centralised)
+* Deployed Active Directory Domain Services (AD DS)
+* Configured DNS
+* Created Organizational Units (OUs)
+* Created users and security groups
+* Joined CLIENT01 to the domain
+* Configured Group Policy Objects (GPOs)
 
-## Resources
-
-- Azure Storage Accounts
-- Branch-based RBAC assignments
-
----
-
-# Key Concepts Demonstrated
-
-- Azure RBAC
-- Microsoft Entra security groups
-- Least-privilege access control
-- Role inheritance
-- Scoped administration
-- Branch-based resource segmentation
-- Group-based administrative access
+➡️ [View Active Directory Lab](./active-directory/README.md)
 
 ---
 
-# Resource Groups
+### Microsoft Entra Connect
 
-![Resource Groups](./screenshots/Resource-groups.png)
+Implemented hybrid identity synchronization between Active Directory and Microsoft Entra ID.
 
-Branch-based Azure Resource Groups used to simulate infrastructure segmentation and RBAC scope boundaries.
+Key activities:
 
----
+* Installed Microsoft Entra Connect
+* Configured Password Hash Synchronization
+* Connected Active Directory to Microsoft Entra ID
+* Synchronized user identities
+* Validated successful synchronization
 
-# Security Groups
-
-![Security Groups](./screenshots/Security-groups.png)
-
-Microsoft Entra security groups used to implement branch-based and administrative access control.
-
----
-
-# RBAC Assignments
-
-![RBAC Assignment](./screenshots/Branch-role-assignment.png)
-
-Configured Azure RBAC assignments using group-based inheritance and least-privilege principles.
-
-### RBAC Structure
-
-| Group | Role | Scope | Role Description |
-|---|---|---|---|
-| London_Branch | Reader | London_Branch | Standard London branch users inherit read-only visibility to resources inside the London branch resource group. Users can inspect resources and configurations but cannot modify infrastructure. |
-| Nottingham_Branch | Reader | Nottingham_Branch | Standard Nottingham branch users inherit read-only visibility to resources inside the Nottingham branch resource group. Users can inspect resources and configurations but cannot modify infrastructure. |
-| IT (centralised) | Virtual Machine Contributor | Both branches | Centralised IT administrators inherit elevated infrastructure permissions across both branch resource groups. Users in this group can manage virtual machines and related infrastructure resources without receiving full ownership or RBAC administration privileges.|
+➡️ [View Entra Connect Synchronization Lab](./entra-connect-sync/README.md)
 
 ---
 
-# Storage Resources
+### Azure RBAC
 
-![Storage Accounts](./screenshots/Storage-accounts.png)
+Configured Azure Role-Based Access Control to demonstrate authorization and access management within Azure.
 
-Azure Storage Accounts deployed within branch resource groups to demonstrate RBAC inheritance and scoped resource access.
+Key activities:
 
----
+* Created Azure user accounts
+* Assigned Azure RBAC roles
+* Validated role assignments
+* Demonstrated authentication versus authorization concepts
 
-# IAM Design Logic
-
-The environment was designed using layered RBAC principles:
-
-- Branch groups provide scoped visibility to branch resources
-- Administrative groups inherit elevated infrastructure permissions
-- Permissions are assigned to groups rather than individual users
-- Access inheritance is controlled through Microsoft Entra security groups
-
-This approach improves scalability, governance consistency and least-privilege enforcement.
+➡️ [View Azure RBAC Lab](./azure-rbac/README.md)
 
 ---
 
-# Issues Encountered
+## Key Concepts Demonstrated
 
-- Understanding Azure RBAC scope inheritance
-- Distinguishing Microsoft Entra roles from Azure RBAC permissions
-- Designing branch vs department-based access models
-- Managing overlapping inherited permissions
-- Navigating differences between Azure Portal and Microsoft Entra Admin Center
+### Authentication
 
----
+User identities were managed through Active Directory and synchronized to Microsoft Entra ID.
 
-# Future Improvements
+### Authorization
 
-- Conditional Access policies
-- MFA enforcement
-- Hybrid Active Directory integration
-- Intune device management
-- Privileged Identity Management (PIM)
-- Additional branch infrastructure resources
+Azure RBAC was used to control access to Azure resources through role assignments.
+
+### Hybrid Identity
+
+Microsoft Entra Connect synchronized identities between Active Directory and Microsoft Entra ID.
+
+### Source of Authority
+
+Active Directory remained the authoritative identity source while Microsoft Entra ID consumed synchronized identities.
+
+## Skills Demonstrated
+
+* Active Directory Administration
+* Microsoft Entra ID Administration
+* Microsoft Entra Connect Configuration
+* Azure RBAC Administration
+* Group Policy Management
+* DNS Administration
+* Hybrid Identity Architecture
+* Identity Synchronization
+* Windows Server Administration
+* Identity and Access Management (IAM)
+
+## Outcome
+
+Successfully implemented a hybrid identity environment integrating Active Directory, Microsoft Entra ID and Azure RBAC. The project demonstrates core enterprise IAM concepts including authentication, authorization and identity synchronization.
