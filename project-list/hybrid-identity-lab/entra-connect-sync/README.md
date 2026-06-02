@@ -57,9 +57,6 @@ Active Directory remained the authoritative identity source. User attributes and
 
 Microsoft Entra Connect synchronizes users, groups and selected identity attributes while maintaining consistency across on-premises and cloud environments.
 
-### Authorization vs Authentication
-
-Identity synchronization does not automatically synchronize Azure RBAC permissions. Microsoft Entra Connect manages identity synchronization, while Azure RBAC remains responsible for authorization and access control within Azure resources.
 
 ## Skills Demonstrated
 
