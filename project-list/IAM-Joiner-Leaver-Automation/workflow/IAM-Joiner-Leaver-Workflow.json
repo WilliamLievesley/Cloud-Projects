@@ -1,0 +1,715 @@
+{
+  "name": "IAM Joiner/Leaver Access Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "otpImJ5YRfesL08w",
+          "mode": "list",
+          "cachedResultName": "Employee Directory",
+          "cachedResultUrl": "/projects/Gqi6bDZpd5yLw2Zw/datatables/otpImJ5YRfesL08w"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "EmployeeID",
+              "keyValue": "={{ $json['What is your Employee ID?'] }}"
+            }
+          ]
+        },
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        144,
+        0
+      ],
+      "id": "d21bf540-b4f4-4a6c-a8b6-f7f34d444f08",
+      "name": "Employee Directory Check"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "325d2188-8b4f-4d9a-97cc-b845680bf325",
+              "leftValue": "={{ $json.CorporateEmail }}",
+              "rightValue": "={{ $('Identity Lifecycle Request Form').item.json['Requester Corporate Email'] }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        304,
+        0
+      ],
+      "id": "1e0ba8d0-6caf-4ddc-bb68-aafd73f7e3d8",
+      "name": "Requester Email Check"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "Yyp1Zqaf1R8XOVMB",
+          "mode": "list",
+          "cachedResultName": "Access Matrix",
+          "cachedResultUrl": "/projects/Gqi6bDZpd5yLw2Zw/datatables/Yyp1Zqaf1R8XOVMB"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "Department",
+              "keyValue": "={{ $json.Department }}"
+            },
+            {
+              "keyName": "JobTitle",
+              "keyValue": "={{ $json.JobTitle }}"
+            }
+          ]
+        },
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        512,
+        0
+      ],
+      "id": "ff89d444-79d9-4725-acd1-94cb4170b194",
+      "name": "Access Matrix"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "def7cde9-3f38-4102-8eff-95cdf1cdc7a3",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": "True",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1120,
+        64
+      ],
+      "id": "58e0203d-d725-43f4-9d17-a2db779b4a3c",
+      "name": "Approval Decision Offboard"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "def7cde9-3f38-4102-8eff-95cdf1cdc7a3",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": "=Tr",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1120,
+        -80
+      ],
+      "id": "166abc56-8a7e-4606-a31d-40b73e1c291a",
+      "name": "Approval Decision Onboard"
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "showText",
+        "responseText": "Request Rejected\nThis IAM access request was rejected by the approver. No access changes have been made."
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.5,
+      "position": [
+        1328,
+        -16
+      ],
+      "id": "84eeb5e3-11e2-4d20-bdb8-44346115f7c2",
+      "name": "Rejection Form",
+      "webhookId": "89f6b3a3-5046-4b35-a782-9059a6721949"
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "toRecipients": "williamjosephlievesley@hotmail.co.uk",
+        "subject": "=IAM Approval - {{ $('Employee Directory Check').item.json.Name }} - {{ $('Identity Lifecycle Request Form').item.json['Request Type'] }}",
+        "message": "=IAM Access Approval Required\n\nEmployee: {{ $('Employee Directory Check').item.json.Name }}\nEmployee ID: {{ $('Employee Directory Check').item.json.EmployeeID }}\nDepartment: {{ $('Employee Directory Check').item.json.Department }}\nJob Title: {{ $('Employee Directory Check').item.json.JobTitle }}\n\nRequest Type: {{ $('Identity Lifecycle Request Form').item.json['Request Type'] }}\nAccess Group: {{ $('Access Matrix').item.json.AccessGroup }}\n\nPlease approve or reject this request.",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        944,
+        -80
+      ],
+      "id": "8d41e9f6-20e0-40dd-aa2a-be4b09311cae",
+      "name": "Onboarding Approval",
+      "webhookId": "37de0d09-fae2-4cd1-8e9e-a36cbce585a9",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "sjUn2NYOTz4TZfqD",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendAndWait",
+        "toRecipients": "williamjosephlievesley@hotmail.co.uk",
+        "subject": "=IAM Approval - {{ $('Employee Directory Check').item.json.Name }} - {{ $('Identity Lifecycle Request Form').item.json['Request Type'] }}",
+        "message": "=IAM Access Approval Required\n\nEmployee: {{ $('Employee Directory Check').item.json.Name }}\nEmployee ID: {{ $('Employee Directory Check').item.json.EmployeeID }}\nDepartment: {{ $('Employee Directory Check').item.json.Department }}\nJob Title: {{ $('Employee Directory Check').item.json.JobTitle }}\n\nRequest Type: {{ $('Identity Lifecycle Request Form').item.json['Request Type'] }}\nAccess Group: {{ $('Access Matrix').item.json.AccessGroup }}\n\nPlease approve or reject this request.",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [
+        944,
+        64
+      ],
+      "id": "3602a6fc-e916-422f-a63b-957c095b2656",
+      "name": "Offboarding Approval",
+      "webhookId": "37de0d09-fae2-4cd1-8e9e-a36cbce585a9",
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "sjUn2NYOTz4TZfqD",
+          "name": "Microsoft Outlook account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Identity Lifecycle Request Form').item.json['Request Type'] }}",
+                    "rightValue": "Onboard",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "b0b04217-272f-4d75-b578-a0541c835a0d"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "8572f063-b25a-4b69-92f4-faecd9428164",
+                    "leftValue": "={{ $('Identity Lifecycle Request Form').item.json['Request Type'] }}",
+                    "rightValue": "Offboard",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        752,
+        0
+      ],
+      "id": "a9f8b168-8ca3-4af8-b50d-b0a8e5563675",
+      "name": "Request Type Onboard or Offboard"
+    },
+    {
+      "parameters": {
+        "operation": "completion",
+        "respondWith": "showText",
+        "responseText": "Invalid email, please enter a valid corporate email.",
+        "limitWaitTime": true,
+        "resumeAmount": 0.05,
+        "resumeUnit": "minutes"
+      },
+      "type": "n8n-nodes-base.form",
+      "typeVersion": 2.5,
+      "position": [
+        368,
+        144
+      ],
+      "id": "33c1285c-3d4f-4eac-8a09-820a30ba0c55",
+      "name": "Email Rejected",
+      "webhookId": "d8f908cf-d645-4ef8-977d-fe7b92f9c071"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "L4ff743j6gPHESG1",
+          "mode": "list",
+          "cachedResultName": "IAM Audit Log",
+          "cachedResultUrl": "/projects/Gqi6bDZpd5yLw2Zw/datatables/L4ff743j6gPHESG1"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Action": "={{ $json.Action }}",
+            "AccessGroup": "={{ $json['Access Group'] }}",
+            "EmployeeID": "={{ $('Employee Directory Check').item.json.EmployeeID }}",
+            "EmployeeName": "={{ $('Employee Directory Check').item.json.Name }}",
+            "RequestType": "={{ $('Identity Lifecycle Request Form').item.json['Request Type'] }}",
+            "Timestamp": "={{ $now }}",
+            "JobTitle": "={{ $('Employee Directory Check').item.json.JobTitle }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "EmployeeID",
+              "displayName": "EmployeeID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "EmployeeName",
+              "displayName": "EmployeeName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "RequestType",
+              "displayName": "RequestType",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "JobTitle",
+              "displayName": "JobTitle",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "AccessGroup",
+              "displayName": "AccessGroup",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Action",
+              "displayName": "Action",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Timestamp",
+              "displayName": "Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1696,
+        -32
+      ],
+      "id": "564f7b80-dbec-458b-8191-961034ad6cb9",
+      "name": "Action Log"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f3a822bc-852a-4b81-b750-c151fc02eb08",
+              "name": "Action",
+              "value": "Grant",
+              "type": "string"
+            },
+            {
+              "id": "3109b5fb-8f31-4092-8a73-ec3e439376ce",
+              "name": "Access Group",
+              "value": "={{ $('Access Matrix').item.json.AccessGroup }}",
+              "type": "string"
+            },
+            {
+              "id": "858db4db-8036-40f0-8870-fb80ee19fd02",
+              "name": "Status",
+              "value": "Ready for Provisioning",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        1472,
+        -144
+      ],
+      "id": "5f452162-c660-410a-9283-ae30784ac588",
+      "name": "Grant Permission"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "22383088-e215-479a-baf6-9610e2f9b197",
+              "name": "Action",
+              "value": "Revoke",
+              "type": "string"
+            },
+            {
+              "id": "a935871f-ae4d-414c-97e7-64d40c838c8f",
+              "name": "Access Group",
+              "value": "={{ $('Access Matrix').item.json.AccessGroup }}",
+              "type": "string"
+            },
+            {
+              "id": "8acf6044-57e7-4e9a-8705-0548bd076a8a",
+              "name": "Status",
+              "value": "Ready for Deprovisioning",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        1472,
+        96
+      ],
+      "id": "9685cbe4-06ce-4210-af77-0659f48e4570",
+      "name": "Revoke Permission"
+    },
+    {
+      "parameters": {
+        "formTitle": "Identity Lifecycle Request",
+        "formDescription": "Submit an employee onboarding or offboarding request.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Requester Corporate Email",
+              "fieldType": "email",
+              "placeholder": "firstname.surname@militech.com",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "What is your Employee ID?",
+              "fieldType": "number",
+              "placeholder": "0000",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Request Type",
+              "fieldType": "radio",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Onboard"
+                  },
+                  {
+                    "option": "Offboard"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        -16,
+        0
+      ],
+      "id": "1307394b-7fba-4f05-b09d-333f167ffefd",
+      "name": "Identity Lifecycle Request Form",
+      "webhookId": "1d546e49-386d-495e-8582-72b80b56da34"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Employee Directory Check": {
+      "main": [
+        [
+          {
+            "node": "Requester Email Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Requester Email Check": {
+      "main": [
+        [
+          {
+            "node": "Access Matrix",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email Rejected",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Access Matrix": {
+      "main": [
+        [
+          {
+            "node": "Request Type Onboard or Offboard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approval Decision Onboard": {
+      "main": [
+        [
+          {
+            "node": "Grant Permission",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Rejection Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Approval Decision Offboard": {
+      "main": [
+        [
+          {
+            "node": "Revoke Permission",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Rejection Form",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Onboarding Approval": {
+      "main": [
+        [
+          {
+            "node": "Approval Decision Onboard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Offboarding Approval": {
+      "main": [
+        [
+          {
+            "node": "Approval Decision Offboard",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Request Type Onboard or Offboard": {
+      "main": [
+        [
+          {
+            "node": "Onboarding Approval",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Offboarding Approval",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Grant Permission": {
+      "main": [
+        [
+          {
+            "node": "Action Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Revoke Permission": {
+      "main": [
+        [
+          {
+            "node": "Action Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Identity Lifecycle Request Form": {
+      "main": [
+        [
+          {
+            "node": "Employee Directory Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "1a7d4041-67ef-4c83-bdbb-8820a0749c98",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "79b1e1f0046e8b30f57bb16204c72ccb95180c0721d78ac42d3f17da195f76e1"
+  },
+  "nodeGroups": [],
+  "id": "iGePaSJXJ3NhD8BS",
+  "tags": []
+}
