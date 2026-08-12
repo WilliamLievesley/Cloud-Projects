@@ -59,7 +59,7 @@ The directory contains employee attributes such as:
 
 The workflow uses this information to validate the employee and determine which access rules should apply.
 
-📄 [View Employee Directory](data/employee-directory.csv)
+📄 [View Employee Directory](data/Employee-Directory.csv)
 
 ---
 
