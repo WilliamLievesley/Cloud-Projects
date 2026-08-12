@@ -27,7 +27,7 @@ The current workflow follows this process:
 
 ### Workflow Overview
 
-![IAM Workflow](screenshots/IAM-automate.png)
+![IAM Workflow](screenshots/IAM-automate-overview.png)
 
 ## IAM & Security Controls
 
