@@ -121,10 +121,13 @@ The current version simulates these provisioning and deprovisioning actions rath
 
 ### 7. Audit Logging
 
-The workflow records the result of the identity request in an IAM audit log.
+The workflow records the outcome of each identity request in an IAM audit log.
 
-This creates a record of workflow activity and provides traceability for access decisions.
+The log provides a record of the access decision and workflow activity, allowing completed Joiner and Leaver requests to be traced after processing.
 
+This demonstrates how logging can be incorporated into an automated identity lifecycle process to support accountability and auditing.
+
+📄 [View IAM Audit Log](data/iam-audit-log.csv)
 ---
 
 ## IAM & Security Controls
