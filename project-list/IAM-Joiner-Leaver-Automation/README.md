@@ -36,7 +36,7 @@ The current workflow follows this process:
 
 ### Workflow Overview
 
-![IAM Joiner/Leaver Workflow](screenshots/workflow-overview.png)
+![IAM Joiner/Leaver Workflow](screenshots/IAM-automate-overview.png)
 
 *Figure 1: n8n workflow showing employee validation, RBAC access lookup, manager approval, Joiner/Leaver routing and audit logging.*
 
