@@ -127,7 +127,9 @@ The log provides a record of the access decision and workflow activity, allowing
 
 This demonstrates how logging can be incorporated into an automated identity lifecycle process to support accountability and auditing.
 
+
 📄 [View IAM Audit Log](IAM-Audit-Log.csv)
+
 ---
 
 ## IAM & Security Controls
