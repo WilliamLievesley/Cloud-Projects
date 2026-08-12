@@ -101,6 +101,8 @@ This introduces an approval control between the access request and the provision
 
 If the request is rejected, the access change does not proceed through the Grant or Revoke path.
 
+![IAM Access Approval Request](screenshots/approve-access.png)
+
 ---
 
 ### 6. Joiner / Leaver Decision
