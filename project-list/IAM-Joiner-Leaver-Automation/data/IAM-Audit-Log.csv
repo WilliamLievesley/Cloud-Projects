@@ -1,0 +1,6 @@
+﻿EmployeeID,EmployeeName,RequestType,JobTitle,AccessGroup,Action,Timestamp
+1234,John Jones,Onboard,,SG-Security-Admin,Grant,2026-08-11T13:33:54.139Z
+1234,John Jones,Offboard,Chief Yeeting Officer,SG-Security-Admin,Revoke,2026-08-11T13:35:36.203Z
+1234,John Jones,Onboard,Chief Yeeting Officer,SG-Security-Admin,Grant,2026-08-11T14:18:56.122Z
+1234,John Jones,Onboard,Chief Yeeting Officer,SG-Security-Admin,Grant,2026-08-11T16:39:12.606Z
+1234,John Jones,Onboard,Chief Yeeting Officer,SG-Security-Admin,Grant,2026-08-11T16:42:16.648Z
