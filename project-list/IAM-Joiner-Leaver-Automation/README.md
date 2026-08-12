@@ -1,5 +1,5 @@
 
-# IAM Joiner/Leaver Automation v1 (in Progress) 
+# IAM Joiner/Leaver Automation — v1
 
 An Identity and Access Management (IAM) workflow built in n8n to automate parts of the employee Joiner and Leaver lifecycle.
 
@@ -25,7 +25,7 @@ The current workflow follows this process:
    - **Leaver** → Revoke Access
 7. Record the result in an IAM audit log.
 
-   ## How It Works
+## How It Works
 
 To simulate an employee identity lifecycle process, I created two datasets that the workflow uses to make access decisions.
 
