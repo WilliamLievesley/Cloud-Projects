@@ -71,7 +71,7 @@ Instead of manually selecting access for each employee, the workflow uses the em
 
 This represents a simplified Role-Based Access Control (RBAC) model and helps make access assignments consistent and repeatable.
 
-📄 [View RBAC Access Matrix](data/rbac-access-matrix.csv)
+📄 [View RBAC Access Matrix](data/Access-Matrix.csv)
 
 ---
 
