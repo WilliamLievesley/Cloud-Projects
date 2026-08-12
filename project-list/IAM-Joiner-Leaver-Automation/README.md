@@ -25,6 +25,69 @@ The current workflow follows this process:
    - **Leaver** → Revoke Access
 7. Record the result in an IAM audit log.
 
+   ## How It Works
+
+To simulate an employee identity lifecycle process, I created two datasets that the workflow uses to make access decisions.
+
+### 1. Employee Directory
+
+I created a test employee directory containing the information required to process an identity request, such as:
+
+- Employee name
+- Employee ID
+- Department
+- Job role
+- Manager
+- Employment status
+
+The workflow uses this information to validate the employee and determine which access rules should apply.
+
+### 2. RBAC Access Matrix
+
+I created an access matrix that maps job roles to the systems and permissions required for that role.
+
+Instead of manually selecting access for each employee, the workflow uses the employee's role to determine the appropriate access automatically.
+
+This represents a simplified Role-Based Access Control (RBAC) model and helps make access assignments consistent and repeatable.
+
+### 3. Employee Validation
+
+When a Joiner or Leaver request enters the workflow, the employee information is checked against the employee directory.
+
+This prevents the workflow from continuing with incomplete or invalid employee information.
+
+### 4. Access Lookup
+
+Once the employee has been validated, their role is used to query the access matrix.
+
+The workflow retrieves the access associated with that role and uses it to build the access request.
+
+### 5. Manager Approval
+
+The proposed access change is sent for manager approval before the workflow continues.
+
+This introduces an approval control between the access request and the provisioning decision.
+
+If the request is rejected, the access change does not proceed.
+
+### 6. Joiner / Leaver Decision
+
+Approved requests are routed based on the lifecycle event:
+
+**Joiner**
+→ The workflow follows the Grant Access path.
+
+**Leaver**
+→ The workflow follows the Revoke Access path.
+
+The current version simulates these provisioning actions rather than making changes to a production identity provider.
+
+### 7. Audit Logging
+
+The workflow records the result of the identity request in an IAM audit log.
+
+This creates a record of the workflow activity and provides traceability for access decisions.
+
 ### Workflow Overview
 
 ![IAM Workflow](screenshots/IAM-automate-overview.png)
